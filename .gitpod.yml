@@ -1,0 +1,14 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+- before: >
+    source ~/.bashrc
+  init: >
+    flutter upgrade && 
+    flutter update-packages --force-upgrade &&
+    flutter run -d web-server --no-resident # prebuilds the app
+  command: >
+    flutter run -d web-server --web-hostname localhost --web-port 3000
+ports:
+- port: 3000
+  onOpen: open-preview
